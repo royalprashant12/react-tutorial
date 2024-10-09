@@ -1,0 +1,45 @@
+{
+  "name": "01bascireact",
+  "version": "0.1.0",
+  "private": true,
+    
+  "dependencies": {
+    // #testing library
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    //  web vitals check performance if  we want to tack performance
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    // start : developed environment project run
+    // build: production envirnment me projcet run (browser only know html css js so how to build)
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    // eject : after some implimentation we feel to eject that i wont now
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    // some time we dont have error but it shows may be you inhance
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
