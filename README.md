@@ -53,8 +53,9 @@ npm create vite@latest
 9. Fragments: Use `<> </>` to group multiple elements
 
 ```
-### day3
-### React Concepts: Variable Declaration and Hooks
+### day3 React Concepts: Variable Declaration and Hooks
+
+
 ## 1. Variable Declaration in React Components
 
 In React, you can declare variables within your component functions. These variables can then be used in the JSX returned by the component.
