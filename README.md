@@ -1,7 +1,7 @@
 
 # React Development Guide
 
-## day 1: Setting Up React Projects
+## Day 1: Setting Up React Projects
 
 ### Bundlers
 Vite, Parcel (Bundlers): Used to keep all React files in one place
@@ -33,12 +33,12 @@ Notes:
 
 Reference: [React Documentation](https://react.dev/learn/start-a-new-react-project)
 
-### day 2: Vite (Faster Alternative)
+### Day 2: Vite (Faster Alternative)
 ```bash
 npm create vite@latest
 ```
 
-## Video 2: React Basics
+## Day 2: React Basics
 
 1. JavaScript: Needs to be injected into HTML/CSS
 2. Single Page Application: All files stored in index.html
@@ -52,11 +52,9 @@ npm create vite@latest
 8. Single Element Return: JSX can only return one root element
 9. Fragments: Use `<> </>` to group multiple elements
 
-```
-### day3 React Concepts: Variable Declaration and Hooks
+## Day 3: React Concepts: Variable Declaration and Hooks
 
-
-## 1. Variable Declaration in React Components
+### 1. Variable Declaration in React Components
 
 In React, you can declare variables within your component functions. These variables can then be used in the JSX returned by the component.
 
@@ -70,17 +68,21 @@ function ExampleComponent() {
     <h1>Evaluated expression: {a}</h1>
   );
 }
+```
+
 In this example, we declare a constant `a` with a value of 20. We then use this variable within the JSX, enclosed in curly braces `{}`. React will evaluate this expression and render the result.
-2. hooks : hooks basically helps in change the u1
-           it basically used by the help of use state function
-example
-### useState Hook
+
+### 2. Hooks in React
+
+Hooks help in changing the UI and are used with the help of the useState function.
+
+#### useState Hook
 
 One of the most commonly used hooks is `useState`. It allows you to add state to functional components.
 
 Here's an example of how to use the `useState` hook:
 
-```
+```jsx
 import { useState } from 'react';
 
 function CounterApp() {
