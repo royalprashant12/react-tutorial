@@ -80,7 +80,7 @@ One of the most commonly used hooks is `useState`. It allows you to add state to
 
 Here's an example of how to use the `useState` hook:
 
-```jsx
+```
 import { useState } from 'react';
 
 function CounterApp() {
