@@ -53,3 +53,67 @@ npm create vite@latest
 9. Fragments: Use `<> </>` to group multiple elements
 
 ```
+### day3
+### React Concepts: Variable Declaration and Hooks
+## 1. Variable Declaration in React Components
+
+In React, you can declare variables within your component functions. These variables can then be used in the JSX returned by the component.
+
+Here's an example:
+
+```jsx
+function ExampleComponent() {
+  const a = 20; // Variable declaration
+
+  return (
+    <h1>Evaluated expression: {a}</h1>
+  );
+}
+In this example, we declare a constant `a` with a value of 20. We then use this variable within the JSX, enclosed in curly braces `{}`. React will evaluate this expression and render the result.
+2. hooks : hooks basically helps in change the u1
+           it basically used by the help of use state function
+example
+### useState Hook
+
+One of the most commonly used hooks is `useState`. It allows you to add state to functional components.
+
+Here's an example of how to use the `useState` hook:
+
+```jsx
+import { useState } from 'react';
+
+function CounterApp() {
+  const [counter, setCounter] = useState(15);
+
+  const addValue = () => {
+    setCounter(counter + 1);
+  };
+
+  const removeValue = () => {
+    setCounter(counter - 1);
+  };
+
+  return (
+    <>
+      <h1>Counter Adder</h1>
+      <button onClick={addValue}>Add value {counter}</button>
+      <button onClick={removeValue}>Remove value {counter}</button>
+      <p>Footer: {counter}</p>
+    </>
+  );
+}
+
+export default CounterApp;
+```
+
+In this example:
+
+1. We import the `useState` hook from React.
+2. We initialize a state variable `counter` with an initial value of 15 using `useState(15)`.
+3. `useState` returns an array with two elements: the current state value and a function to update it. We use array destructuring to assign these to `counter` and `setCounter` respectively.
+4. We define two functions, `addValue` and `removeValue`, which use `setCounter` to update the state.
+5. In the JSX, we use the `counter` value and attach our functions to button click events.
+
+This creates a simple counter application where you can increment or decrement the counter value, and the UI updates automatically to reflect these changes.
+
+Hooks like `useState` make it easier to manage and update component state, leading to more readable and maintainable React code.
