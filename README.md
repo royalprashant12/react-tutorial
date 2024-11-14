@@ -1,4 +1,5 @@
-
+why we need react js ?
+- state manage by (js) ui/ux manage by(dom) to communication between them we need reactjs
 # React Development Guide
 
 ## Day 1: Setting Up React Projects
