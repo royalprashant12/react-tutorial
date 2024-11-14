@@ -1,5 +1,6 @@
 why we need react js ?
 - state manage by (js) ui/ux manage by(dom) to communication between them we need reactjs
+- framework (rule follow strictly) , library(normal anywhere you use) react is library
 # React Development Guide
 
 ## Day 1: Setting Up React Projects
