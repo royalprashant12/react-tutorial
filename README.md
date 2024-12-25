@@ -123,3 +123,7 @@ In this example:
 This creates a simple counter application where you can increment or decrement the counter value, and the UI updates automatically to reflect these changes.
 
 Hooks like `useState` make it easier to manage and update component state, leading to more readable and maintainable React code.
+
+Day 4. 
+Tailwind installation 
+props makes reusable
