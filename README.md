@@ -284,3 +284,8 @@ function useCurrencyInfo(currency) {
 
 export default useCurrencyInfo;
 ```
+## Day 5
+
+loder it fetch api if hover the mouse only
+router
+useloder hook
