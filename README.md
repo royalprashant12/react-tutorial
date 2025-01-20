@@ -284,8 +284,242 @@ function useCurrencyInfo(currency) {
 
 export default useCurrencyInfo;
 ```
-## Day 5
+## Day 6
+# React Router and Data Fetching Guide
 
-loder it fetch api if hover the mouse only
-router
-useloder hook
+## Table of Contents
+1. [React Router DOM Installation](#react-router-dom-installation)
+2. [Fetching API on Hover](#fetching-api-on-hover)
+3. [React Router Basics](#react-router-basics)
+4. [useLoader Hook](#useloader-hook)
+5. [useParams Hook](#useparams-hook)
+6. [Fetch API](#fetch-api)
+
+## React Router DOM Installation
+
+React Router is a standard library for routing in React applications. It enables navigation among views in a React application, allowing for a single-page app experience.
+
+### Installation
+
+To install React Router DOM, run the following command in your project directory:
+
+\`\`\`bash
+npm install react-router-dom
+\`\`\`
+
+## Fetching API on Hover
+
+Fetching data when a user hovers over an element can improve performance by loading data only when needed.
+
+### Example: Custom Hook for Hover Fetching
+
+\`\`\`jsx
+import { useState, useCallback } from 'react';
+
+function useHoverFetch(url) {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchData = useCallback(async () => {
+    if (data) return; // Don't fetch if we already have data
+    setIsLoading(true);
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [url, data]);
+
+  return { data, isLoading, error, fetchData };
+}
+
+// Usage in a component
+function HoverFetchComponent({ url }) {
+  const { data, isLoading, error, fetchData } = useHoverFetch(url);
+
+  return (
+    <div onMouseEnter={fetchData}>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {data && <p>Data: {JSON.stringify(data)}</p>}
+    </div>
+  );
+}
+\`\`\`
+
+## React Router Basics
+
+React Router allows you to handle routing in your React application, creating a single-page application experience.
+
+### Basic Setup
+
+\`\`\`jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/users">Users</Link></li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/users" element={<Users />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+
+export default App;
+\`\`\`
+
+## useLoader Hook
+
+React Router v6 introduced the concept of loaders, which are functions that load data for a route before it renders. While there isn't a built-in \`useLoader\` hook, we can create a custom hook that mimics this functionality.
+
+### Custom useLoader Hook
+
+\`\`\`jsx
+import { useState, useEffect } from 'react';
+
+function useLoader(loadingFunction) {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        setIsLoading(true);
+        const result = await loadingFunction();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    load();
+  }, [loadingFunction]);
+
+  return { data, isLoading, error };
+}
+
+// Usage
+function UserComponent({ userId }) {
+  const loadUser = async () => {
+    const response = await fetch(`https://api.example.com/users/${userId}`);
+    if (!response.ok) throw new Error('Failed to fetch user');
+    return response.json();
+  };
+
+  const { data: user, isLoading, error } = useLoader(loadUser);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!user) return null;
+
+  return <div>User: {user.name}</div>;
+}
+\`\`\`
+
+## useParams Hook
+
+The \`useParams\` hook allows you to access URL parameters in your React components.
+
+### Syntax and Usage
+
+\`\`\`jsx
+import { useParams } from 'react-router-dom';
+
+function UserProfile() {
+  const { userId } = useParams();
+
+  return <div>User Profile for user {userId}</div>;
+}
+
+// In your router setup
+<Route path="/users/:userId" element={<UserProfile />} />
+\`\`\`
+
+## Fetch API
+
+The Fetch API provides a powerful and flexible feature for making network requests.
+
+### Basic Usage
+
+\`\`\`javascript
+fetch('https://api.example.com/data')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+\`\`\`
+
+### Using Fetch with Async/Await
+
+\`\`\`javascript
+/ async function getAllUsers(){
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/users')
+
+//         const data = await response.json()
+//         console.log(data);
+//     } catch (error) {
+//         console.log("E: ", error);
+//     }
+// }
+
+//getAllUsers()
+
+fetch('https://api.github.com/users/hiteshchoudhary')
+.then((response) => {
+    return response.json()
+})
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => console.log(error))
+
+// promise.all
+
+\`\`\`
+
+
+\`\`\`
