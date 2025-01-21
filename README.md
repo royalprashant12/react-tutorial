@@ -303,9 +303,9 @@ React Router is a standard library for routing in React applications. It enables
 
 To install React Router DOM, run the following command in your project directory:
 
-\`\`\`bash
+```bash
 npm install react-router-dom
-\`\`\`
+```
 
 ## Fetching API on Hover
 
@@ -313,7 +313,7 @@ Fetching data when a user hovers over an element can improve performance by load
 
 ### Example: Custom Hook for Hover Fetching
 
-\`\`\`jsx
+```jsx
 import { useState, useCallback } from 'react';
 
 function useHoverFetch(url) {
@@ -351,7 +351,7 @@ function HoverFetchComponent({ url }) {
     </div>
   );
 }
-\`\`\`
+```
 
 ## React Router Basics
 
@@ -359,7 +359,7 @@ React Router allows you to handle routing in your React application, creating a 
 
 ### Basic Setup
 
-\`\`\`jsx
+```jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
@@ -398,15 +398,15 @@ function Users() {
 }
 
 export default App;
-\`\`\`
+```
 
 ## useLoader Hook
 
-React Router v6 introduced the concept of loaders, which are functions that load data for a route before it renders. While there isn't a built-in \`useLoader\` hook, we can create a custom hook that mimics this functionality.
+React Router v6 introduced the concept of loaders, which are functions that load data for a route before it renders. While there isn't a built-in `useLoader` hook, we can create a custom hook that mimics this functionality.
 
 ### Custom useLoader Hook
 
-\`\`\`jsx
+```jsx
 import { useState, useEffect } from 'react';
 
 function useLoader(loadingFunction) {
@@ -449,15 +449,15 @@ function UserComponent({ userId }) {
 
   return <div>User: {user.name}</div>;
 }
-\`\`\`
+```
 
 ## useParams Hook
 
-The \`useParams\` hook allows you to access URL parameters in your React components.
+The `useParams` hook allows you to access URL parameters in your React components.
 
 ### Syntax and Usage
 
-\`\`\`jsx
+```jsx
 import { useParams } from 'react-router-dom';
 
 function UserProfile() {
@@ -468,7 +468,7 @@ function UserProfile() {
 
 // In your router setup
 <Route path="/users/:userId" element={<UserProfile />} />
-\`\`\`
+```
 
 ## Fetch API
 
@@ -476,7 +476,7 @@ The Fetch API provides a powerful and flexible feature for making network reques
 
 ### Basic Usage
 
-\`\`\`javascript
+```javascript
 fetch('https://api.example.com/data')
   .then(response => {
     if (!response.ok) {
@@ -490,36 +490,31 @@ fetch('https://api.example.com/data')
   .catch(error => {
     console.error('Fetch error:', error);
   });
-\`\`\`
+```
 
 ### Using Fetch with Async/Await
 
-\`\`\`javascript
-/ async function getAllUsers(){
-//     try {
-//         const response = await fetch('https://jsonplaceholder.typicode.com/users')
+```javascript
+async function getAllUsers() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("E: ", error);
+  }
+}
 
-//         const data = await response.json()
-//         console.log(data);
-//     } catch (error) {
-//         console.log("E: ", error);
-//     }
-// }
-
-//getAllUsers()
+// getAllUsers()
 
 fetch('https://api.github.com/users/hiteshchoudhary')
-.then((response) => {
+  .then((response) => {
     return response.json()
-})
-.then((data) => {
+  })
+  .then((data) => {
     console.log(data);
-})
-.catch((error) => console.log(error))
+  })
+  .catch((error) => console.log(error))
 
 // promise.all
-
-\`\`\`
-
-
-\`\`\`
+```
