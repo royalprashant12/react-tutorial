@@ -518,3 +518,35 @@ fetch('https://api.github.com/users/hiteshchoudhary')
 
 // promise.all
 ```
+
+
+prop drilling:
+context api
+steps:
+first create context folder
+make UserContext.js inside that file
+ ``` javascripts
+import React from 'react'
+
+const UserContext = React.createContext()
+
+export default UserContext
+```
+2nd step we need to make ucontext provider
+
+``` javascript
+import React from 'react'
+import UserContext from './UserContext'
+
+const ContextProvider = ({ children }) => {
+    const [user, setUser] = React.useState(null)
+
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    )
+    
+
+export default ContextProvider
+```
